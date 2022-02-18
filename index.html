@@ -1,43 +1,47 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
     <head>
-        <meta charset="UFT-8" />
+        <meta charset="UTF-8" />
+        <title>Document</title>
         <link rel="stylesheet" href="style.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script tpye="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <div class="main">
             <h1>
-                'RealMaster'에 대해 알아보자!
+                'RealMaster"에 대해 알아보자!
             </h1>
             <h2>
-                내가 좋아하는 것을 맞춰보시오.
+                내가 좋아하는 음식을 맞춰보시오!
             </h2>
-            <img class="kiwi" src="kiwi.png" />
+            <img src="kiwi.png" />
             <div class="quiz-state">
+                <!-- 1단계 시작 -->
                 <button type="button" class="start">
                     Start
                 </button>
-
+                <!-- 2단계 진행 -->
                 <div class="started">
-                    <input type="text" class="input-answer" id="12" />
-					<button type="button" class="enter">Enter</button>
+                    <input type="text" class="input-answer" />
+                    <button class="enter" type="button">Enter</button>
                     <div class="state">
-                        <div class="timer">남은 시간: <span class="timer-remaining"></span></div>
-                        <div class="score">
-                            정답:<span class="current-score">0</span>/<span class="total"></span>
-                        </div>
+                        <div class="timer">남은시간 : <span class="timer-remaining">60초</span></div>
+                        <div class="score">0점</div>
                     </div>
-
-                    <ul class="answers-score"></ul>
+                    <ul class="answers-correct">
+                        
+                    </ul>
                 </div>
+                <!-- 3단계 마무리 -->
                 <div class="end">
-                    <div class="end-score">당신은 나를 <span class="final-score"></span> 알고 있습니다.</div>
-                </div>
-                <div class="footnote">
-                    Thanks for playing!
-                    <a href="#" class="reset">Play again</a>
+                    <div class="end-score">
+                        당신은 나를 <span class="final-score">0% </span>알고 있습니다.
+                    </div>
+                    <div class="footnote">
+                        Thanks for playing!
+                        <a href="#" class="reset">Play again!</a>
+                    </div>
                 </div>
             </div>
         </div>
