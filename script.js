@@ -1,115 +1,59 @@
-$(function(){
-	$('.start').on('click', quizStart);
-	$('.started').hide();
-	$('.end').hide();
-	$('.footnote').hide();
-	$('.reset').on('click', reset);
-	$('.enter').on('click', checkInput);
-	initAnswers();
-	
-	
+$(function () {
+    //시작화면
+    $('.started').hide();
+    $('.end').hide();
+
+    //버튼 셋팅
+    $('.start').on('click', quizStart);
+    $('.enter').on('click', checkInput);
+    $('.reset').on('click', reset);
 });
 
-
-
-
-var Quiz_Time = 3;
-
-function getTimeString(){
-	
-	if(Quiz_Time <=0){
-		return '0:00';
-	} else{
-		var minutes = Math.floor(Quiz_Time/60);
-		var seconds = Quiz_Time%60;
-		if (seconds < 10){
-			seconds = '0' + seconds;
-		}
-		console.log(minutes + ':' + seconds)
-		return minutes + ':' + seconds;
-	}
-		
+//퀴즈 시작
+function quizStart() {
+    $('.start').hide();
+    $('.started').show();
+    timeInterval = setInterval(getTime, 1000);
 }
 
-function reduceTime(){
-	Quiz_Time--;
-	if(Quiz_Time === 0) {
-		endQuiz();
-	} else{
-		$('.timer-remaining').text(getTimeString);
-	}
+var Quiz_Time = 60;
+
+function getTime() {
+    Quiz_Time = Quiz_Time - 1;
+    if (Quiz_Time === 0) {
+        endQuiz();
+    } else {
+        $('.timer-remaining').text(Quiz_Time + '초');
+    }
 }
 
+var Quiz_Answers = {
+    돈까스: false,
+    카레: false,
+    치킨: false,
+    돈까스카레: false,
+    치킨카레: false,
+};
 
-
-
-//초기값
-var Quiz_Answers = [
-	'돈까스', '카레', '롤', 'abc', '키워', '사과'
-];
-
-
-
-function initAnswers(){
-	answers = {};
-	Quiz_Answers.forEach(function(item){
-		var answer = item.trim().toLowerCase();
-		answers[answer] = false;
-		
-	});
-
-}
-//.toLowerCase
-initAnswers();
-
-function quizStart(){
-	$('.start').hide();
-	$('.started').show();
-	$('.total').text(Quiz_Answers.length);
-	$('.timer-remaining').text(getTimeString());
-	timeInterval = setInterval(reduceTime, 1000);
-	
-}
-
-//정답
 var score = 0;
 
 function checkInput() {
-  	console.log("ad")
-    var input = $('#12').val();
-    if (answers.hasOwnProperty(input) && !answers[input]) {
-    // give credit
-    answers[input] = true;
-    score++;
-    $('.current-score').text(score);
-    $('.answers-score').prepend(createAnswerItem(input));
-    $('.input-answer').val("");   
-   console.log("aㅇd")
-    // check if user beat the quiz
-    if (score === Quiz_Answers.length) {
-      endQuiz();
+    var input = $('.input-answer').val();
+    if (Quiz_Answers.hasOwnProperty(input) && !Quiz_Answers[input]) {
+        Quiz_Answers[input] = true;
+        score = score + 1;
+        $('.score').text(score * 20 + '점');
+        $('.input-answer').val('');
+        $('.answers-correct').prepend('<li>' + input + '</li>');
     }
-  }
 }
 
-function createAnswerItem(answer) {
-  return $('<li>', { text: answer });
-}
-
-
-function endQuiz(){
-	clearTimeout(timeInterval);
-    
-    $('.timer').hide();
+function endQuiz() {
     $('.started').hide();
     $('.end').show();
-    $('.final-score').text(score*30 + "%");
-    $('.footnote').show();
-	
+    $('.final-score').text(score * 20 + '%');
 }
 
-
-
-function reset(){
-	location.reload();
+function reset() {
+    location.reload();
 }
