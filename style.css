@@ -1,158 +1,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-html{
-	background-color: skyblue;
-	
-}
-body{
-	
-	font-family: 'Jua', sans-serif;
-}
+@keyframes rotate_image {
+    100% {
+        transform: rotate(360deg);
+    }
+};
 
-h1{
-	color: black;
-	text-align: center;
-	font-size: 3rem;
-}
-h2{
-	text-align: center;
-	font-size: 2rem;
+
+
+html {
+    margin: 0 auto;
 }
 
-.kiwi{
-	width: 10%;
-	height: 10%;
-	margin-left: 5%;
-	float: left;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background: skyblue;
+    font-family: 'Jua', sans-serif;
 }
 
-.quiz-state{
-	
-	width: 60%;
-	margin: 0 auto;
+h1 {
+    text-align: center;
+    font-size: 5rem;
 }
 
-.start{
-	width: 70%;
-	margin: 0 auto;
-	display: block;
-	border: solid 5px black;
-	border-radius: 16px;
-	box-shadow: 0 0 6px 5px black;
-	cursor: pointer;
-	font-size: 3rem;
-	color: #CD1f48;
-	font-family: 'Jua', sans-serif;
-	
+h2 {
+    text-align: center;
+    font-size: 4rem;
 }
 
-.start:hover{
-	background-color: black;
-}
-
-.kiwi {
-	animation: rotate_image 6s linear infinite;transform-origin: 50% 50%;
-} 
-
-@keyframes rotate_image{ 100% { transform: rotate(360deg); } }
-
-.started{
-	width: 80%;
-	margin: 0 auto;
-	
-}
-
-.input-answer{
-	width: 80%;
-	margin: 0 auto;
-	display: block;
-	border: solid 5px black;
-	border-radius: 16px;
-	box-shadow: 0 0 6px 5px black;
-	cursor: pointer;
-	font-size: 3rem;
-	color: #CD1f48;
-	font-family: 'Jua', sans-serif;
-	
-}
-
-.timer{
-	font-size: 2rem;
-	float: left;
-	margin-top: 5px;
-	}
-
-
-@keyframes answer {
-	100% { opacity: 1; transform: translateY(0); }
-}
-.score{
-	font-size: 2rem;
-	float: right;
-	margin-top: 5px;
-}
-
-.end-score{
-	text-align: center;
-	font-size: 2.5rem;
-}
-
-
-
-.footnote{
-	font-size: 1rem;
-	padding top: 20px;
-	text-align:right;
-	border-top: dotted 2px rgba(255, 255, 255, .8);
-}
-
-
-li {
-    padding: 10px;
-    margin: 0px 10px 3px 0;
-    display: block;
+img {
+    width: 10%;
+    height: 10%;
+    margin-left: 5%;
     float: left;
-    border: solid 1px red;
-    background-color: rgba(255, 255, 255, .3);
-    transform: translateY(-40px);
-    animation: answer .5s ease-out forwards;
+    animation: rotate_image 6s linear infinite;
+    transform-origin: 50% 50%;
 }
 
-@media screen and (max-width: 600px) {
-  html {
-    
-      font-size: 8px;
-  }
-    
-    
+.quiz-state {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.start {
+    width: 30%;
+    margin: 0 auto;
+    display: block;
+    border: solid 5px black;
+    box-shadow: 0 0 6px 5px black;
+    border-radius: 16px;
+    font-size: 3rem;
+    color: #cd1f48;
+    cursor: pointer;
+    margin-top: 10%;
+    font-family: 'Jua', sans-serif;
+}
+.start:hover {
+    background-color: black;
+}
+
+.input-answer {
+    font-family: 'Jua', sans-serif;
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    border: solid 5px black;
+    box-shadow: 0 0 6px 5px black;
+    border-radius: 16px;
+    font-size: 3rem;
+    color: blueviolet;
+    margin-top: 10%;
+}
+
+.enter {
+    width: 30%;
+    margin: 0 auto;
+    display: block;
+    border: solid 5px gray;
+    box-shadow: 0 0 6px 5px gray;
+    border-radius: 16px;
+    font-size: 2.5rem;
+    color: black;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.enter:hover {
+    background: gray;
+}
+
+.timer {
+    font-size: 2rem;
+    float: left;
+    margin-top: 5px;
+}
+
+.score {
+    font-size: 2rem;
+    float: right;
+    margin-top: 5px;
 }
 
 .state::after {
     content: '';
     display: block;
     clear: both;
-    border-top: dotted 2px rgba(255, 255, 255, .8);
+    border-top: dotted 2px white;
 }
 
-.enter{
-	width: 30%;
-	margin: 0 auto;
-	margin-top: 15px;
-	display: block;
-	border: solid 5px black;
-	border-radius: 16px;
-	box-shadow: 0 0 6px 5px black;
-	cursor: pointer;
-	font-size: 1rem;
-	color: #CD1f48;
-	font-family: 'Jua', sans-serif;
-	
-}
-.enter:hover{
-	background-color: black;
+.end-score {
+    text-align: center;
+    font-size: 2rem;
 }
 
-.final-score{
-	font-size: 3rem;
-	color: red;
+.final-score {
+    font-size: 3rem;
+    color: red;
+}
+
+.footnote {
+    border-top: dotted 2px white;
+    text-align: right;
+}
+
+@keyframes answer {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li {
+    font-family: 'Jua', sans-serif;
+    padding: 10px;
+    margin: 0px 10px 3px 0;
+    display: block;
+    float: left;
+    border: solid 1px red;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-40px);
+    animation: answer 0.5s ease-out forwards;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 8px;
+    }
 }
